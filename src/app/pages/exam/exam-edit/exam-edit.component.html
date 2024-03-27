@@ -1,0 +1,36 @@
+<form [formGroup]="form" class="example-container" (submit)="operate()">
+    <div [hidden]="true">
+        <mat-form-field>
+            <input matInput type="text" placeholder="ID" required formControlName="idExam">
+        </mat-form-field>
+    </div>
+   
+
+    <mat-form-field>
+        <input matInput type="text" placeholder="Name Exam" required formControlName="nameExam">
+        <small *ngIf="f['nameExam'].errors?.['required'] && f['nameExam'].touched" class="invalid"> Is required</small>
+        <small *ngIf="f['nameExam'].errors?.['minlength'] && f['nameExam'].touched" class="invalid"> Min lenght is 3</small>
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput type="text" placeholder="Desciption Exam" required formControlName="descriptionExam">
+        @if (f['descriptionExam'].errors?.['required'] && f['descriptionExam'].touched) {
+            <small  class="invalid"> Is required</small>
+        }
+        
+    </mat-form-field>
+
+    <div class="container">
+        <button mat-raised-button color="primary" class="boton" type="submit">
+            <mat-icon>done</mat-icon>
+            <span>Done</span>
+        </button>
+    
+        <button mat-raised-button color="accent" class="boton" type="button" routerLink="/pages/exam">
+            <mat-icon>cancel</mat-icon>
+            <span>Cancel</span>
+        </button>
+    </div>
+    
+    
+</form> 

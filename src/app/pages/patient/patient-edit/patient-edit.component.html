@@ -1,0 +1,57 @@
+<form [formGroup]="form" class="example-container" (submit)="operate()">
+    
+    <div [hidden]="true">
+        <mat-form-field>
+            <input matInput type="text" placeholder="ID" required formControlName="idPatient">
+        </mat-form-field>
+    </div>
+   
+
+    <mat-form-field>
+        <input matInput type="text" placeholder="First Name" required formControlName="firstName">
+        <small *ngIf="f['firstName'].errors?.['required'] && f['firstName'].touched" class="invalid"> Is required</small>
+        <small *ngIf="f['firstName'].errors?.['minlength'] && f['firstName'].touched" class="invalid"> Min lenght is 3</small>
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput type="text" placeholder="Last Name" required formControlName="lastName">
+        @if (f['lastName'].errors?.['required'] && f['lastName'].touched) {
+            <small  class="invalid"> Is required</small>
+        }
+        
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput type="text" placeholder="DNI" required formControlName="dniPatient">
+        <small *ngIf="f['dniPatient'].errors?.['required'] && f['dniPatient'].touched" class="invalid"> Is required</small>
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput type="text" placeholder="Address" required formControlName="address">
+        <small *ngIf="f['address'].errors?.['required'] && f['address'].touched" class="invalid"> Is required</small>
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput type="text" placeholder="Phone" required formControlName="phone">
+        <small *ngIf="f['phone'].errors?.['required'] && f['phone'].touched" class="invalid"> Is required</small>
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput type="text" placeholder="Email" required formControlName="email">
+        <small *ngIf="f['email'].errors?.['required'] && f['email'].touched" class="invalid"> Is required</small>
+    </mat-form-field>
+
+    <div class="container">
+        <button mat-raised-button color="primary" class="boton" type="submit">
+            <mat-icon>done</mat-icon>
+            <span>Done</span>
+        </button>
+    
+        <button mat-raised-button color="accent" class="boton" type="button" routerLink="/pages/patient">
+            <mat-icon>cancel</mat-icon>
+            <span>Cancel</span>
+        </button>
+    </div>
+    
+    
+</form> 

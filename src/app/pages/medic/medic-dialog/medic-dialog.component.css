@@ -1,0 +1,19 @@
+.example-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.example-container>* {
+    width: 100%;
+}
+button {
+    margin-left: 5px;
+    margin-right: 5px;
+    width: 30px;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+   
+}

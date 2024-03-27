@@ -1,0 +1,22 @@
+<mat-dialog-content>
+
+    <h2 class="mat-h2"> Patient: {{consult.patient.firstName}} | Date: {{consult.consultDate | date:'dd-MM-yyyy'}} </h2>
+
+    @for (det of consult.details; track $index) {
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title>DIAGNOSIS</mat-card-title>
+                <mat-card-subtitle>{{det.diagnosis}}</mat-card-subtitle>
+            </mat-card-header>
+
+            <mat-card-content>
+                <p>{{det.treatment}}</p>
+            </mat-card-content>
+        </mat-card>
+    }
+
+    
+
+</mat-dialog-content>
+
+

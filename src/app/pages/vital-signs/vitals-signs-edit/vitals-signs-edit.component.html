@@ -1,0 +1,54 @@
+<form [formGroup]="formGroup" (submit)="operate()">
+
+    <div [hidden]="true">
+        <mat-form-field>
+            <input matInput type="text" placeholder="ID" required formControlName="idVitalSign">
+        </mat-form-field>
+    </div>
+
+    <div [hidden]="visible()">
+        <mat-form-field>
+            <input matInput placeholder="Patient" formControlName="patient" [matAutocomplete]="autoPatient"
+                [formControl]="patientControl">
+            <mat-autocomplete #autoPatient="matAutocomplete" [displayWith]="showPatient">
+                @for (e of patientFiltered$ | async; track $index) {
+                <mat-option [value]="e">
+                    {{e.firstName}}
+                </mat-option>
+                }
+            </mat-autocomplete>
+        </mat-form-field>
+    </div>
+
+
+    <mat-form-field appearance="fill">
+        <mat-label>Select date</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="vitalSignDate">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput placeholder="Temperature" formControlName="temperature">
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput placeholder="Heartbeat" formControlName="heartbeat">
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput placeholder="Respiratory Rate" formControlName="respiratoryRate">
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" class="boton" type="submit">
+        <mat-icon>done</mat-icon>
+        <span>Done</span>
+    </button>
+
+    <button mat-raised-button color="accent" class="boton" type="button" routerLink="/pages/vitalSigns">
+        <mat-icon>cancel</mat-icon>
+        <span>Cancel</span>
+    </button>
+
+</form>
